@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12151A"/>
+      <stop offset="100%" stop-color="#050608"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4FF32"/>
+      <stop offset="100%" stop-color="#A2E014"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#222831"/>
+      <stop offset="100%" stop-color="#14181F"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- iOS App Icon Container -->
+  <rect width="512" height="512" rx="115" fill="url(#bg)" />
+
+  <!-- Outer subtle border -->
+  <rect x="8" y="8" width="496" height="496" rx="108" fill="none" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="4" />
+
+  <!-- Glowing background flare -->
+  <circle cx="256" cy="200" r="140" fill="#C5F531" fill-opacity="0.15" filter="url(#glow)" />
+
+  <!-- Wallet / Card Graphic -->
+  <g transform="translate(106, 126)">
+    <!-- Credit Card Shape -->
+    <rect x="0" y="40" width="300" height="190" rx="28" fill="url(#cardGrad)" stroke="url(#lime)" stroke-width="4" />
+    <path d="M 0 90 L 300 90" stroke="#000000" stroke-width="24" opacity="0.4" />
+    <rect x="30" y="140" width="50" height="38" rx="8" fill="#FFD700" opacity="0.85" />
+    
+    <!-- Sparkle / Arrow upwards -->
+    <path d="M 170 190 L 210 130 L 235 155 L 270 100" fill="none" stroke="url(#lime)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+    <polygon points="270,100 250,102 268,120" fill="url(#lime)" />
+
+    <!-- Wallet Front Lip -->
+    <path d="M -20 110 L 280 110 C 300 110 310 120 310 140 L 310 230 C 310 250 290 270 260 270 L -20 270 C -40 270 -50 250 -50 230 L -50 140 C -50 120 -30 110 -20 110 Z" fill="url(#bg)" stroke="#3A424D" stroke-width="3" opacity="0.95" />
+    
+    <!-- Lime Clasp -->
+    <rect x="230" y="165" width="60" height="48" rx="14" fill="url(#lime)" />
+    <circle cx="250" cy="189" r="8" fill="#050608" />
+  </g>
+
+  <!-- Modern Accent Dot -->
+  <circle cx="390" cy="110" r="14" fill="url(#lime)" />
+</svg>

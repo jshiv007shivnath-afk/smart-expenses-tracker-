@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12151A"/>
+      <stop offset="100%" stop-color="#050608"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4FF32"/>
+      <stop offset="100%" stop-color="#A2E014"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#222831"/>
+      <stop offset="100%" stop-color="#14181F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="url(#bg)" />
+  <rect x="12" y="12" width="488" height="488" rx="103" fill="none" stroke="#C5F531" stroke-opacity="0.3" stroke-width="8" />
+
+  <g transform="translate(106, 126)">
+    <rect x="0" y="40" width="300" height="190" rx="28" fill="url(#cardGrad)" stroke="url(#lime)" stroke-width="6" />
+    <path d="M 0 90 L 300 90" stroke="#000000" stroke-width="24" opacity="0.4" />
+    <rect x="30" y="140" width="50" height="38" rx="8" fill="#FFD700" opacity="0.85" />
+    <path d="M 170 190 L 210 130 L 235 155 L 270 100" fill="none" stroke="url(#lime)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+    <polygon points="270,100 250,102 268,120" fill="url(#lime)" />
+    <path d="M -20 110 L 280 110 C 300 110 310 120 310 140 L 310 230 C 310 250 290 270 260 270 L -20 270 C -40 270 -50 250 -50 230 L -50 140 C -50 120 -30 110 -20 110 Z" fill="url(#bg)" stroke="#3A424D" stroke-width="4" opacity="0.95" />
+    <rect x="230" y="165" width="60" height="48" rx="14" fill="url(#lime)" />
+    <circle cx="250" cy="189" r="8" fill="#050608" />
+  </g>
+  <circle cx="390" cy="110" r="16" fill="url(#lime)" />
+</svg>

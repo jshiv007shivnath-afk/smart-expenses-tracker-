@@ -1,0 +1,73 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build-and-verify:
+    name: Build & Verify Application
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Clean Installation
+        run: |
+          echo "Running clean installation..."
+          npm ci
+
+      - name: Automated Security Audit
+        run: |
+          echo "Running security audit..."
+          npm audit --audit-level=high || echo "::warning::Security audit reported vulnerabilities, but continuing build."
+
+      - name: Type Safety & Linting
+        run: |
+          echo "Running TypeScript compiler checks..."
+          npm run lint
+
+      - name: Production Build Verification
+        env:
+          NODE_ENV: production
+        run: |
+          echo "Executing production build..."
+          npm run build
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build-dist
+          path: dist/
+          retention-days: 7
+
+      - name: Generate Build Summary Report
+        if: always()
+        run: |
+          echo "# 🚀 Build & Verification Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Job Status: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Here is the summary of the pipeline execution:" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Event:** \`${{ github.event_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ **All checks passed!** Code is built, linted, and artifact is uploaded." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Build Failed.** Please review the logs to fix the issues." >> $GITHUB_STEP_SUMMARY
+          fi
